@@ -17,11 +17,6 @@ node {
 
     stage('Fetch Dependencies') {
         fetcher = docker.image('python:3.4-stretch')
-        fetcher.inside('-v /etc/ssl/certs/linodeca.pem:/opt/cacert.pem') {
-            #withCredentials([usernamePassword(credentialsId: 'artifactory', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-            #    sh "pip download -r requirements.txt -d pip-packages/ -i https://${USERNAME}:${PASSWORD}@artifactory.linode.com/artifactory/api/pypi/${pythonRepo}/simple/ --cert /opt/cacert.pem"
-            #}
-        }
     }
 
     def serverImage = ''
