@@ -27,7 +27,6 @@ node {
     stage('Test') {
         def dockerVersion = [version: '3.5', services: [caserver: [image: "${serverImage.id}"]]]
         writeYaml file: 'docker-compose-override.yml', data: dockerVersion
-        #sh 'docker-compose -f docker-compose-test.yml -f docker-compose-override.yml run caserver python3 -m pytest'
     }
 
     if(upload) {
