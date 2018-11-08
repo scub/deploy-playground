@@ -15,14 +15,6 @@ node {
         tags = [GIT_COMMIT, 'prod']
         upload = true
     }
-    #else if(env.BRANCH_NAME == 'develop') {
-    #    tags = [GIT_COMMIT, 'development']
-    #    upload = true
-    #}
-    #else if(env.BRANCH_NAME ==~ /^release\/\d+\.\d+$/) {
-    #    tags = [GIT_COMMIT, 'testing']
-    #    upload = true
-    #}
 
     stage('Fetch Dependencies') {
         fetcher = docker.image('python:3.4-stretch')
@@ -54,28 +46,3 @@ node {
         }
     }
 }
-
-#def getPythonDepsRepo() {
-#    // If this Jenkinsfile is running on a PR, we should fetch deps from
-#    // the branch to be merged into. If running on a branch, we want to pull
-#    // the deps from that branch, defaulting to master (pypi-virtual).
-#    String target
-#    if(env.CHANGE_TARGET) {
-#        target = env.CHANGE_TARGET
-#        echo "PR, target: $target"
-#    }
-#    else {
-#        target = env.BRANCH_NAME
-#        echo "Non-PR, target: $target"
-#    }
-#
-#    if(target == 'development') {
-#        return 'pypi-virtual-dev'
-#        }
-#    else if(target ==~ /^release\/\d+\.\d+$/) {
-#        return 'pypi-virtual-testing'
-#    }
-#    else {
-#        return 'pypi-virtual'
-#    }
-#}
