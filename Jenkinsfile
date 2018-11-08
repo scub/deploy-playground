@@ -24,6 +24,11 @@ node {
         serverImage = docker.build('deploy-playground')
     }
 
+    stage('Test') {
+        docker.run('deploy-playground')
+        sh 'docker run -it deploy-playground'
+    }
+
     stage('Shipit') {
       sh 'echo "Shippin it"'
     }
