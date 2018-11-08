@@ -1,5 +1,5 @@
 FROM python:3.4-stretch
 
-COPY ./sbin/hello_world.py .
+COPY ./sbin/ /opt/sbin
 
-CMD [ "python", "./hello_world.py" ]
+CMD [ "python", "/opt/sbin/hello_world.py" ]
