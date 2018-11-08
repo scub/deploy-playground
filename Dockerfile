@@ -8,5 +8,4 @@ COPY ./app/ /opt/app
 COPY ./etc/linode /etc/linode
 
 # RUN OUR SCRIPTS
-CMD [ "python", "/opt/sbin/hello_world.py" ]
 CMD [ "FLASK_APP=/opt/app/my_cool_api.py", "flask run" ]
