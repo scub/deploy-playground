@@ -31,7 +31,7 @@ node {
 
     if(upload) {
         stage('Upload Image') {
-          sh 'echo "Hello World"
+          sh 'echo "Hello World"'
         }
     }
 }
