@@ -17,9 +17,6 @@ node {
 
     stage('Fetch Dependencies') {
         fetcher = docker.image('python:3.4-stretch')
-        fetcher.inside() {
-          sh "pip install -r requirements.txt"
-        }
     }
 
     def serverImage = ''
