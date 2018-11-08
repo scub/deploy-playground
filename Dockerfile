@@ -1,5 +1,9 @@
 FROM python:3.4-stretch
 
+# Copy pip-packages and install them
+COPY pip-packages pip-packages
+RUN find pip-packages/ -name "*.tar.gz" | xargs -r pip install --find-links=pip-packages/
+
 # COPY REQUIREMENTS
 COPY ./requirements.txt /requirements.txt
 
