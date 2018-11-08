@@ -9,7 +9,6 @@ node {
 
     def upload = false // whether or not to upload docker images to artifactory
     def tags = [] // tags for the resulting docker images
-    #def pythonRepo = getPythonDepsRepo() // python repo to pull stratus and nimbus from
 
     if(env.BRANCH_NAME == 'master') {
         tags = [GIT_COMMIT, 'prod']
