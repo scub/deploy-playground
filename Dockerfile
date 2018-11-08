@@ -1,6 +1,5 @@
 FROM python:3.4-stretch
 
-WORKDIR /app
-COPY sbin/ /opt/
+COPY ./sbin/hello_world.py /opt/hellow_world.py
 
-CMD [ "/opt/sbin/hello_world.py" ]
+eMD [ "/opt/hello_world.py" ]
