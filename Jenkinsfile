@@ -25,7 +25,6 @@ node {
     }
 
     stage('Test') {
-        docker.run('deploy-playground')
         sh 'docker run -it deploy-playground'
     }
 
