@@ -32,11 +32,7 @@ node {
 
     if(upload) {
         stage('Upload Image') {
-            #docker.withRegistry(registry, 'artifactory') {
-            #    tags.each {
-            #        serverImage.push("$it")
-            #    }
-            #}
+          sh 'echo "Hello World"
         }
     }
 }
