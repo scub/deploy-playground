@@ -24,14 +24,7 @@ node {
         serverImage = docker.build('deploy-playground')
     }
 
-    stage('Test') {
-        def dockerVersion = [version: '3.5', services: [caserver: [image: "${serverImage.id}"]]]
-        writeYaml file: 'docker-compose-override.yml', data: dockerVersion
-    }
-
-    if(upload) {
-        stage('Upload Image') {
-          sh 'echo "Hello World"'
-        }
+    stage('Shipit') {
+      sh 'echo "Shippin it"'
     }
 }
