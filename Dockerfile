@@ -6,6 +6,7 @@ RUN find pip-packages/ -name "*.tar.gz" | xargs -r pip install --find-links=pip-
 
 # COPY REQUIREMENTS
 COPY ./requirements.txt /requirements.txt
+RUN pip --no-cache install -r /requirements.txt
 
 # DEPLOY ALL ZE CODES
 COPY ./sbin/ /opt/sbin

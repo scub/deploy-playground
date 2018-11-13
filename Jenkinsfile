@@ -29,6 +29,7 @@ node {
 
     stage('Test') {
         sh 'docker run -t deploy-playground'
+        sh 'env'
     }
 
     stage('Shipit') {
