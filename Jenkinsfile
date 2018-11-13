@@ -5,7 +5,6 @@ node {
     }
 
     def GIT_COMMIT = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
-    def registry = 'https://linode-docker.artifactory.linode.com'
 
     def upload = false // whether or not to upload docker images to artifactory
     def tags = [] // tags for the resulting docker images
