@@ -18,7 +18,7 @@ node {
     stage('Fetch Dependencies') {
         fetcher = docker.image('python:3.4-stretch')
         fetcher.inside() {
-            sh "pip download --no-cache-dir -r requirements.txt -d ./pip-packages/"
+            sh "pip download --no-cache-dir flask"
         }
     }
 
