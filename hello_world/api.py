@@ -14,7 +14,8 @@ except Exception as FailedToProcess:
 
 @app.route("/")
 def hello():
-    if config.has_key('username'):
+    username = config.get('username')
+    if username is not None:
         return "Hello world {}".format( config['username'] )
     else:
         return "No username found"
