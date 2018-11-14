@@ -27,8 +27,7 @@ node {
     }
 
     stage('Test') {
-        sh 'docker run -p 9999:8080 -t deploy-playground'
-        sh 'env'
+      sh 'echo "Testin it"'
     }
 
     stage('Shipit') {
