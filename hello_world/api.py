@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 from flask import Flask
-import yaml
+import yaml, sys
 
 app = Flask(__name__)
 
-config = { 'path' : '/etc/linode/config.yaml' }
+config = { 'path' : '/etc/hello_world/config.yaml' }
 
 try:
     with open( config['path'], 'r' ) as fd:
@@ -19,3 +19,4 @@ def hello():
         return "Hello world {}".format( config['username'] )
     else:
         return "No username found"
+

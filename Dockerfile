@@ -10,10 +10,8 @@ RUN pip --no-cache install -r requirements.txt
 COPY . .
 
 # DEPLOY ALL ZE CONFIGS? Lol, seems bad practice to source this way
-COPY ./etc/linode /etc/linode
+COPY ./etc/hello_world /etc/hello_world
 
-#RUN chmod 755 /etc/linode/config.yaml
-#RUN chmod 755 hello_api/api.py
 
 # Lets run the code!
 ENV FLASK_APP=hello_world/api.py
