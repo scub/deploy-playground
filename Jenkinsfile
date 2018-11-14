@@ -17,7 +17,7 @@ node {
     stage('Fetch Dependencies') {
         fetcher = docker.image('python:3.4-stretch')
         fetcher.inside() {
-            sh "pip download --no-cache-dir flask"
+            sh "pip download --no-cache-dir -r ./requirements.txt"
         }
     }
 
@@ -27,7 +27,7 @@ node {
     }
 
     stage('Test') {
-        sh 'docker run -t deploy-playground'
+        sh 'docker run -p 9999:8080 -t deploy-playground'
         sh 'env'
     }
 
