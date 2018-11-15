@@ -1,3 +1,10 @@
+properties([
+  parameters([
+      string(name: 'REGISTRY', defaultValue: 'localhost:5000', description: 'The target registry', )
+         ])
+  ])
+
+
 node {
     stage('Checkout') {
         deleteDir()
@@ -21,7 +28,7 @@ node {
         }
     }
 
-    docker.withRegistry("http://registry-debian-stretch:5000",'')
+    docker.withRegistry('tcp://registry-debian-stretch:5000','')
 
     def serverImage = ''
     stage('Build') {
@@ -33,7 +40,7 @@ node {
     }
 
     stage('Shipit') {
-      sh 'echo "Shippin it"'
+      sh 'echo "Shippin it to ${params.REGISTRY}"'
       serverImage.push()
     }
 }
