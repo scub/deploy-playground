@@ -21,7 +21,7 @@ node {
         }
     }
 
-    docker.withRegistry("http://registry-debian-stretch:5000")
+    docker.withRegistry("http://registry-debian-stretch:5000",'')
 
     def serverImage = ''
     stage('Build') {
