@@ -1,11 +1,9 @@
-properties([
-  parameters([
-      string(name: 'REGISTRY', defaultValue: 'localhost:5000', description: 'The target registry', )
-         ])
-  ])
-
-
 node {
+    properties([
+      parameters([
+          string(name: 'REGISTRY', defaultValue: 'localhost:5000', description: 'The target registry', )
+             ])
+      ])
     stage('Checkout') {
         deleteDir()
         checkout scm
