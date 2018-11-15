@@ -21,6 +21,8 @@ node {
         }
     }
 
+    docker.withRegistry("http://registry-debian-stretch:5000")
+
     def serverImage = ''
     stage('Build') {
         serverImage = docker.build('deploy-playground')
@@ -32,5 +34,6 @@ node {
 
     stage('Shipit') {
       sh 'echo "Shippin it"'
+      serverImage.push()
     }
 }
