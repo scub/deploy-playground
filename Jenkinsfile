@@ -36,6 +36,6 @@ node {
     }
 
     stage('Shipit') {
-      sh 'echo "Shippin it to ${params.REGISTRY}"'
+      sh echo "Shippin it to ${params.REGISTRY}"
     }
 }
