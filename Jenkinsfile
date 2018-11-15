@@ -28,8 +28,6 @@ node {
         }
     }
 
-    docker.withRegistry('tcp://registry-debian-stretch:5000','')
-
     def serverImage = ''
     stage('Build') {
         serverImage = docker.build('deploy-playground')
@@ -41,6 +39,5 @@ node {
 
     stage('Shipit') {
       sh 'echo "Shippin it to ${params.REGISTRY}"'
-      serverImage.push()
     }
 }
