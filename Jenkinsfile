@@ -1,9 +1,12 @@
 node {
+
     properties([
       parameters([
-          string(name: 'REGISTRY', defaultValue: 'localhost:5000', description: 'The target registry', )
+          string(name: 'REGISTRY', defaultValue: 'localhost:5000', description: 'The target registry' ),
+          string(name: 'REGISTRY_CREDS', defaultValue: 'admin:docker', description: 'The target registry credentials' )
              ])
       ])
+
     stage('Checkout') {
         deleteDir()
         checkout scm
@@ -28,6 +31,7 @@ node {
 
     def serverImage = ''
     stage('Build') {
+        docker.withRegistry("tcp://${params.REGISTRY}", "${params.REGISTRY_CRED}")
         serverImage = docker.build('deploy-playground')
     }
 
@@ -37,5 +41,6 @@ node {
 
     stage('Shipit') {
       sh "echo 'Shippin it to ${params.REGISTRY}'"
+      serverImage
     }
 }
