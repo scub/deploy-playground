@@ -4,6 +4,7 @@ node {
       parameters([
           string(name: 'REGISTRY', defaultValue: 'localhost:5000', description: 'The target registry' ),
           string(name: 'REGISTRY_CREDS', defaultValue: 'admin:docker', description: 'The target registry credentials' )
+          string(name: 'BUILD_ENV_TAG', defaultValue: 'staging', description: 'The target environment (dev,staging,production)' )
              ])
       ])
 
@@ -31,7 +32,8 @@ node {
 
     def serverImage = ''
     stage('Build') {
-        docker.withRegistry("tcp://${params.REGISTRY}", "${params.REGISTRY_CRED}")
+        sh "echo 'docker.withRegistry(\"${params.REGISTRY}\"'"
+        docker.withRegistry("${params.REGISTRY}")
         serverImage = docker.build('deploy-playground')
     }
 
