@@ -12,14 +12,6 @@ node {
         checkout scm
     }
 
-    environment {
-      GIT_BRANCH = """${sh(
-                          returnStdout: true,
-                          script: 'git rev-parse --abbrev-ref HEAD'
-                          )}"""
-    }
-
-
     def GIT_COMMIT = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
     def GIT_BRANCH = sh(script: "git rev-parse --abbrev-ref HEAD", returnStdout: true).trim()
 
@@ -45,8 +37,8 @@ node {
 
     def serverImage = ''
     stage('Build') {
-        sh 'echo "Building artifact ${BUILD_ENV_TAG} ${env.GIT_BRANCH}"'
-        serverImage = docker.build('deploy-playground')
+        sh 'echo "Building artifact ${BUILD_ENV_TAG}"'
+        serverImage = docker.build('deploy-playground:${BUILD_ENV_TAG}')
     }
 
     stage('Test') {
