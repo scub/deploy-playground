@@ -1,5 +1,4 @@
 node {
-
     properties([
       parameters([
           string(name: 'REGISTRY', defaultValue: 'localhost:5000', description: 'The target registry' ),
@@ -33,7 +32,6 @@ node {
     def serverImage = ''
     stage('Build') {
         sh "echo 'docker.withRegistry(\"${params.REGISTRY}\"'"
-        docker.withRegistry("${params.REGISTRY}")
         serverImage = docker.build('deploy-playground')
     }
 
@@ -43,6 +41,6 @@ node {
 
     stage('Shipit') {
       sh "echo 'Shippin it to ${params.REGISTRY}'"
-      serverImage
+      sh 'echo ${serverImage}'
     }
 }
