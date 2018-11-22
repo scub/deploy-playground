@@ -12,6 +12,14 @@ node {
         checkout scm
     }
 
+    environment {
+      GIT_BRANCH = """${sh(
+                          returnStdout: true,
+                          script: 'git rev-parse --abbrev-ref HEAD'
+                          )}"""
+    }
+
+
     def GIT_COMMIT = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
     def GIT_BRANCH = sh(script: "git rev-parse --abbrev-ref HEAD", returnStdout: true).trim()
 
