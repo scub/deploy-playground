@@ -22,6 +22,11 @@ node {
         upload = true
     }
 
+    if(env.BRANCH_NAME == 'staging') {
+        tags = [GIT_COMMIT, 'staging']
+        upload = true
+    }
+
     stage('Fetch Dependencies') {
         fetcher = docker.image('python:3.4-stretch')
         fetcher.inside() {
@@ -31,8 +36,7 @@ node {
 
     def serverImage = ''
     stage('Build') {
-        sh "echo 'docker.withRegistry(\"${params.REGISTRY}\")'"
-        serverImage = docker.build('deploy-playground')
+        serverImage = docker.build()
     }
 
     stage('Test') {
@@ -40,9 +44,8 @@ node {
     }
 
     stage('Shipit') {
-      sh "echo 'Shippin it to ${params.REGISTRY}'"
-      sh 'echo ${serverImage}'
-      docker.withRegistry( "http://localhost:5000" ) {
+      sh "echo 'Shippin ${serverImage} to ${params.REGISTRY}'"
+      docker.withRegistry( "${params.REGISTRY}" ) {
         serverImage.push()
       }
     }
