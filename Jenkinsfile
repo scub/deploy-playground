@@ -13,7 +13,7 @@ node {
     }
 
     def GIT_COMMIT = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
-    def GIT_BRANCH = sh(script: "git branch -l | egrep '^*' | cut -d' ' -f2", returnStdout: true).trim()
+    def GIT_BRANCH = sh(script: "git rev-parse --abbrev-ref HEAD", returnStdout: true).trim()
 
     def upload = false // whether or not to upload docker images to artifactory
     def tags = [] // tags for the resulting docker images
