@@ -31,8 +31,10 @@ node {
 
     def serverImage = ''
     stage('Build') {
-        sh "echo 'docker.withRegistry(\"${params.REGISTRY}\"'"
+        sh "echo 'docker.withRegistry(\"${params.REGISTRY}\")'"
+        docker.withRegistry("http://localhost:5000")
         serverImage = docker.build('deploy-playground')
+        serverImage.push()
     }
 
     stage('Test') {
