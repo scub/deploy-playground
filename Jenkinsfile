@@ -37,7 +37,7 @@ node {
 
     def serverImage = ''
     stage('Build') {
-        sh 'echo "Building artifact ${BUILD_ENV_TAG}" ${GIT_BRANCH}'
+        sh 'echo "Building artifact ${BUILD_ENV_TAG} ${GIT_BRANCH}"'
         serverImage = docker.build('deploy-playground')
     }
 
