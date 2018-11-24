@@ -16,7 +16,7 @@ except Exception as FailedToProcess:
 def hello():
     username = config.get('username')
     if username is not None:
-        return "Hello world {}".format( config['username'] )
+        return "Hello world from {}".format( config['username'] )
     else:
         return "No username found"
 
