@@ -3,7 +3,7 @@ node {
       parameters([
           string(name: 'REGISTRY', defaultValue: 'http://localhost:5000', description: 'The target registry' ),
           string(name: 'REGISTRY_CREDS', defaultValue: 'admin:docker', description: 'The target registry credentials' ),
-          string(name: 'BUILD_ENV_TAG', defaultValue: 'staging', description: 'The target environment (dev,staging,production)' )
+          string(name: 'BUILD_ENV_TAG', defaultValue: 'production', description: 'The target environment (dev,staging,production)' )
              ])
       ])
 
