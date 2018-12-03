@@ -1,4 +1,4 @@
 # poor practice do not take 4srscat, just for demonstration
 config:
-  username: iamroot
-  password: this_is_a_bad_one
+  greeting: 'Hello world'
+  environment: 'dev'
