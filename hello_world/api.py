@@ -29,3 +29,7 @@ def hello():
     else:
         return "No environment or greeting found"
 
+
+@app.route("/status")
+def app_health_check():
+    return "OK - Systems operational"
