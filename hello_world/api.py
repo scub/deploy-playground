@@ -14,9 +14,22 @@ except Exception as FailedToProcess:
 
 @app.route("/")
 def hello():
-    username = config.get('username')
-    if username is not None:
-        return "Hello world from {}".format( config['username'] )
-    else:
-        return "No username found"
+    greeting    = config.get('greeting', "Hello World")
+    environment = config.get('environment', 'dev')
 
+    if greeting is not None and environment is not None:
+        return "{greeting} from {environment}".format( **{
+            'greeting':    greeting,
+            'environment': environment })
+    elif greeting is None and environment is not None:
+        return "Hello world from {environment}".format( **{
+            'environment': environment })
+    elif username is not None:
+        return "Hi {}".format( username )
+    else:
+        return "No environment or greeting found"
+
+
+@app.route("/status")
+def app_health_check():
+    return "OK - Systems operational"
