@@ -29,11 +29,6 @@ def hello():
     else:
         return "No environment or greeting found"
 
-
 @app.route("/status")
 def app_health_check():
     return "OK - Systems operational"
-
-@app.route("/new")
-def app_health_check():
-    return "This is a new endpoint!"
